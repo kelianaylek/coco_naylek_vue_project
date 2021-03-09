@@ -1,0 +1,3 @@
+<template>
+    Formulaire
+</template>
