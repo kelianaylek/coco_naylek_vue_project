@@ -18,7 +18,9 @@
 
   </form>
 
-  <button @click="addItem">Envoyer</button>
+  <router-link to="/admin">
+    <span @click="addItem">Envoyer</span>
+  </router-link>
 
   <div id="errors"></div>
 </template>

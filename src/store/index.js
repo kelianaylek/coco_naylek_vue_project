@@ -42,31 +42,38 @@ export default createStore({
             if (item.title == "") {
                 error.innerHTML = "Merci de choisir un titre";
                 append(errors, error);
-            } else {
-                if (item.metaTitle == "") {
 
-                    error.innerHTML = "Merci de choisir un metaTitle";
-                    append(errors, error);
-                } else {
-                    if (item.metaDescription == "") {
-                        error.innerHTML = "Merci de choisir une metaDescription";
-                        append(errors, error);
-                    } else {
-                        if (item.content == "") {
-                            error.innerHTML = "Merci de choisir un content";
-                            append(errors, error);
-                        } else {
-                            if (item.image == "") {
-                                item.image = "https://media-exp1.licdn.com/dms/image/C4E03AQEu5FtYDinAsA/profile-displayphoto-shrink_200_200/0/1583224561076?e=1620864000&v=beta&t=M6zr9GwcJ6qG8Cn74TpbD8PmNBMbCVtFHDmWTUbPZf4"
-                            }
-                            state.blogs.push(item)
-                            console.log(item)
-                        }
-                    }
+            } else if (item.metaTitle == ""){
+                error.innerHTML = "Merci de choisir un metaTitle";
+                append(errors, error);
+
+            } else if (item.metaDescription == ""){                 
+                error.innerHTML = "Merci de choisir une metaDescription";
+                append(errors, error);
+
+            } else if (item.content == "") {
+                error.innerHTML = "Merci de choisir un content";
+                append(errors, error);
+
+            } 
+
+            else{
+                if (item.image == ""){                          
+                    item.image = "https://media-exp1.licdn.com/dms/image/C4E03AQEu5FtYDinAsA/profile-displayphoto-shrink_200_200/0/1583224561076?e=1620864000&v=beta&t=M6zr9GwcJ6qG8Cn74TpbD8PmNBMbCVtFHDmWTUbPZf4"
                 }
-            }
+                state.blogs.push(item)
+                console.log(item)
 
+                state.blogTitle = "",
+                state.blogMetaTitle = "",
+                state.blogMetaDescription = "",
+                state.blogImage = "",
+                state.blogContent = ""
+            }       
         },
+
+
+        
 
         UPDATE_ELEMENT(state, element) {
             if (element.id == "blogTitle") {
@@ -112,6 +119,7 @@ export default createStore({
         },
     },
 
+
     actions: {
         addItem({ commit }) {
             let item = {
@@ -124,9 +132,7 @@ export default createStore({
                 active: false
             }
 
-
             commit('ADD_ITEM', item)
-
         },
 
         changeBlog({ commit }, element) {
