@@ -10,16 +10,17 @@
       <label for="metaDescription">Meta Description</label>
       <input v-model="blogMetaDescription" @input="updateElement" id="blogMetaDescription" type="text" name="metaDescription">
 
-      <label for="image">Ajouter une image</label>
-      <input v-model="blogImage" @input="updateElement" id="blogImage" type="text" name="image">
-
       <label for="content">Corps du post</label>
       <input v-model="blogContent" @input="updateElement" type="textarea" name="content" id="blogContent">
+
+      <label for="image">Ajouter une image (optionnel)</label>
+      <input v-model="blogImage" @input="updateElement" id="blogImage" type="text" name="image">
 
   </form>
 
   <button @click="addItem">Envoyer</button>
 
+  <div id="errors"></div>
 </template>
 
 <script>
