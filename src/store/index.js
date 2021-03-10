@@ -56,25 +56,61 @@ export default createStore({
 
     DELETE_BLOG(state, item){
       state.blogs.splice(state.blogs.indexOf(item), 1)
-      console.log(state.blogs)
+    },
+
+    CHANGE_ACTIVE(state, item){
+      if(!item.active){
+        state.blogs.splice(state.blogs.indexOf(item), 1)
+        item.active = true
+        state.blogs.push(item)
     }
+
+    else {
+      item.active = false
+      }
+    },
+
+    CHANGE_BLOG(state, item){
+      state.blogs.splice(state.blogs.indexOf(item), 1)
+      state.blogs.push(item)
+      console.log(state.blogs)
   },
+},
 
   actions: {
     addItem({ commit }){
       let item = {
+        id: this.state.blogs.length,
         title: this.state.blogTitle,
         metaTitle: this.state.blogMetaTitle,
         metaDescription: this.state.blogMetaDescription,
         image: this.state.blogImage,
-        content: this.state.blogContent
+        content: this.state.blogContent,
+        active: false
       }
 
 
       commit('ADD_ITEM', item)
-      console.log(this.state.blogs)
 
     },
+
+    changeBlog({ commit }, element){
+      let oldId = element.id
+      let oldActive = element.active
+
+      let item = {
+        id: oldId,
+        title: this.state.blogTitle,
+        metaTitle: this.state.blogMetaTitle,
+        metaDescription: this.state.blogMetaDescription,
+        image: this.state.blogImage,
+        content: this.state.blogContent,
+        active: oldActive
+      }
+
+      commit('CHANGE_BLOG', item)
+      console.log(this.state.blogs)
+    }
   },
 
   modules: {

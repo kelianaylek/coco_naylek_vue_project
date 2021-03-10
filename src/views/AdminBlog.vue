@@ -15,35 +15,37 @@
                 <p>{{ blog.content }}</p>
             </div>
         </div>
-        <button>Editer</button>
+        <button @click="changeActive(blog)">Editer</button>
         <button @click="deleteBlog(blog)">Supprimer</button>
+        <BlogEdit v-if="blog.active" :blog="blog"></BlogEdit>
+
     </div>    
+
 </template>
 
 
-
 <script>
+import BlogEdit from "../components/BlogEdit.vue"
+import { mapActions } from 'vuex'
 
 export default{
+    components:{
+        BlogEdit
+    },
 
     methods: {
+        ...mapActions(['editBlog']), 
         deleteBlog (item) {
             this.$store.commit('DELETE_BLOG', item)
+        },
+
+        changeActive (item){
+            this.$store.commit('CHANGE_ACTIVE', item)
+
         }
     }
 }
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <style>
@@ -60,4 +62,7 @@ export default{
     align-self: center;
 }
 
+#blogEdit{
+    display: none;
+}
 </style>
