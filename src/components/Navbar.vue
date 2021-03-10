@@ -1,9 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/admin">Gérer le blog</router-link>
-    <router-link to="/blog">Blog</router-link>
-    <router-link to="/login">Login</router-link>
-
+    <router-link v-for="route in $store.state.routes" :key="route"  :to="route.link">{{ route.content }}</router-link>
   </div>
   <router-view/>
 </template>
