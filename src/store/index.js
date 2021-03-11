@@ -106,18 +106,20 @@ export default createStore({
 
         CHANGE_ACTIVE(state, item) {
             if (!item.active) {
-                state.blogs.splice(state.blogs.indexOf(item), 1)
-                item.active = true
-                state.blogs.push(item)
+                state.blogs.forEach(element => {
+                    if(element.id != item.id && element.active == true){
+                        element.active = false
+                    } else {
+                        state.blogs[state.blogs.indexOf(item)].active = true
+                    }
+                });
             } else {
-                item.active = false
+                state.blogs[state.blogs.indexOf(item)].active = false
             }
         },
 
-        CHANGE_BLOG(state, item) {
-            state.blogs.splice(state.blogs.indexOf(item), 1)
-            state.blogs.push(item)
-            console.log(state.blogs)
+        CHANGE_BLOG(state, payload) {
+            state.blogs[payload.oldId] = payload.item
         },
     },
 
@@ -151,8 +153,7 @@ export default createStore({
                 active: oldActive
             }
 
-            commit('CHANGE_BLOG', item)
-            console.log(this.state.blogs)
+            commit('CHANGE_BLOG', {item, oldId})
         }
     },
 
