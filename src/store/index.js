@@ -4,20 +4,6 @@ import router from '../router/index.js'
 
 export default createStore({
     state: {
-        routes: [{
-                content: "Gérer le blog",
-                link: "/admin"
-            },
-            {
-                content: "Blog",
-                link: "/blog"
-            },
-            {
-                content: "Login",
-                link: "/login"
-            }
-        ],
-
         blogs: [],
         users: [],
 
@@ -129,7 +115,7 @@ export default createStore({
         },
 
         CONNECT_USER(state, user){
-            state.users.forEach(element => {
+            state.users.forEach(element => {     
                 if(element.mail == user.mail){
                     if(element.password == user.password){
                         user.id = element.id
@@ -144,6 +130,11 @@ export default createStore({
                     }
                 }
             });
+        },
+
+        DECONNEXION(state, user){
+            user.isConnected = false
+            state.users[user.id] = user
         }
     },
 

@@ -1,31 +1,23 @@
 <template>
-  <div id="nav">
-    <router-link v-for="route in $store.state.routes" :key="route"  :to="route.link">{{ route.content }}</router-link>
-    <button v-if="user.isConnected">Déconnexion</button>
-  </div>
-  <router-view/>
+    <div id="nav">
+        <router-link to="/admin_blog">Gérer le blog</router-link>
+        <router-link to="/blog">Blog</router-link>
+        <router-link v-for="user in this.$store.state.users" :key="user" v-show="user.isConnected == false" to="/login">Login</router-link>
+        <button v-for="user in this.$store.state.users" :key="user" v-show="user.isConnected" @click="deconnexion(user)">{{ user.username }}</button>
+
+    </div>
+    <router-view/>
 </template>
 
 <script>
 export default {
   name: 'Navbar',
 
-  data: function(){
-    return{
-      user: {}
-    }
-  },
-
   methods: {
-    findAllUsers(){
-      let users = this.$store.state.users
-      users.forEach(element => {
-          if(element.isConnected == true){
-              this.user = element
-              console.log(this.user)
-          }
-      });
+    deconnexion(user){
+      this.$store.commit("DECONNEXION", user)
     }
-  },
+  }
+
 }
 </script>
