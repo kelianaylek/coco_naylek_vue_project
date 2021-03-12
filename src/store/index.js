@@ -74,9 +74,6 @@ export default createStore({
             }
         },
 
-
-
-
         UPDATE_ELEMENT(state, element) {
             if (element.id == "blogTitle") {
                 state.blogTitle = element.value
@@ -107,7 +104,7 @@ export default createStore({
         CHANGE_ACTIVE(state, item) {
             if (!item.active) {
                 state.blogs.forEach(element => {
-                    if(element.id != item.id && element.active == true){
+                    if (element.id != item.id && element.active == true) {
                         element.active = false
                     } else {
                         state.blogs[state.blogs.indexOf(item)].active = true
@@ -153,7 +150,7 @@ export default createStore({
                 active: oldActive
             }
 
-            commit('CHANGE_BLOG', {item, oldId})
+            commit('CHANGE_BLOG', { item, oldId })
         }
     },
 

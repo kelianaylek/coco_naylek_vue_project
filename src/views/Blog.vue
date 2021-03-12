@@ -1,6 +1,4 @@
 <template>
-
-    
    <BlogList></BlogList>
 </template>
 
