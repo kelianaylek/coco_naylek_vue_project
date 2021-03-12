@@ -19,6 +19,7 @@ export default createStore({
         ],
 
         blogs: [],
+        users: [],
 
         blogTitle: "",
         blogMetaTitle: "",
@@ -118,6 +119,32 @@ export default createStore({
         CHANGE_BLOG(state, payload) {
             state.blogs[payload.oldId] = payload.item
         },
+
+        ADD_USER(state, user){
+            user.id = state.users.length
+            state.users.push(user)
+            console.log(state.users)
+
+            router.push({ path: '/login' })
+        },
+
+        CONNECT_USER(state, user){
+            state.users.forEach(element => {
+                if(element.mail == user.mail){
+                    if(element.password == user.password){
+                        user.id = element.id
+                        user.username = element.username
+                        user.isConnected = true
+                        state.users[element.id] = user
+                        console.log(state.users)
+                    }
+
+                    else{
+                        console.log("PAS DE MDP")
+                    }
+                }
+            });
+        }
     },
 
 
@@ -151,7 +178,11 @@ export default createStore({
             }
 
             commit('CHANGE_BLOG', { item, oldId })
-        }
+        },
+
+        // addUser({ commit }, element){
+
+        // }
     },
 
     modules: {}
