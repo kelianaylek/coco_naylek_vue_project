@@ -32,6 +32,7 @@ export default ({
             }
 
             this.$store.commit('ADD_USER', user)
+            
         }
     }
 })

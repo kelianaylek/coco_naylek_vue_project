@@ -106,7 +106,7 @@ export default createStore({
             state.blogs[payload.oldId] = payload.item
         },
 
-        ADD_USER(state, user){
+        ADD_USER(state, user) {
             user.id = state.users.length
             state.users.push(user)
             console.log(state.users)
@@ -114,27 +114,31 @@ export default createStore({
             router.push({ path: '/login' })
         },
 
-        CONNECT_USER(state, user){
-            state.users.forEach(element => {     
-                if(element.mail == user.mail){
-                    if(element.password == user.password){
+        CONNECT_USER(state, user) {
+            state.users.forEach(element => {
+                if (element.mail == user.mail) {
+                    if (element.password == user.password) {
                         user.id = element.id
                         user.username = element.username
                         user.isConnected = true
                         state.users[element.id] = user
                         console.log(state.users)
-                    }
+                        router.push({ path: '/blog' })
 
-                    else{
+                    } else {
                         console.log("PAS DE MDP")
                     }
                 }
             });
         },
 
-        DECONNEXION(state, user){
+        DECONNEXION(state, user) {
             user.isConnected = false
             state.users[user.id] = user
+
+            console.log(state.users)
+            router.push({ path: '/login' })
+
         }
     },
 

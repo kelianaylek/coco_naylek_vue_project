@@ -32,7 +32,7 @@ export default {
         }
     },
     beforeMount(){
-    this.getBlogs()
+        this.getBlogs()
  },
 }
 
