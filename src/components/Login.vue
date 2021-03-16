@@ -1,12 +1,18 @@
 <template>
-    <h1>Login</h1>
-
+<div class="formLogin">
     <form action="">
-        <input type="email" v-model="user.mail" name="mail">
-        <input type="text" v-model="user.password" name="password">
-        <button type="submit" @click="connexion">Connexion</button>
+        <div>
+            <label for="mail">Email : </label>
+            <input type="email" v-model="user.mail" name="mail">
+        </div>
+        <div>
+            <label for="password">Mot de passe : </label>
+             <input type="text" v-model="user.password" name="password">
+        </div>
+        
+        <button type="submit" @click="connexion">Se connecter</button>
     </form>
-
+</div>
 </template>
 
 <script>
@@ -39,3 +45,19 @@ export default ({
     }
 })
 </script>
+<style>
+    .formLogin{
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+    form div{
+        margin-bottom: 40px;
+    }
+    form{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+    }
+</style>

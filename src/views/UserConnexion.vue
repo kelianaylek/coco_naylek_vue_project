@@ -1,6 +1,8 @@
 <template>
     <Login></Login>
-    <router-link :to="{ name: 'register'}">Si vous n'êtes pas encore inscrits, <strong>inscrivez vous</strong></router-link>
+    <div class="connectLink">
+      <router-link :to="{ name: 'register'}">Si vous n'êtes pas encore inscrits, <strong>inscrivez vous</strong></router-link>
+    </div>
 </template>
 
 <script>
@@ -15,3 +17,12 @@ export default {
   }
 }
 </script>
+<style>
+    .connectLink{
+        display: flex;
+        justify-content: center;
+    }
+    .connectLink a{
+      text-decoration: none;
+    }
+</style>

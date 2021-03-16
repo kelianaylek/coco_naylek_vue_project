@@ -1,5 +1,6 @@
 <template>
-  <p>Formulaire</p>
+<div class="editBlog">
+
   <form action="POST">
       <label for="title">Titre de la page</label>
       <input v-model="newItem.blogTitle" @input="updateElement" id="blogTitle" type="text" name="title">
@@ -16,9 +17,10 @@
       <label for="content">Corps du post</label>
       <input v-model="newItem.blogContent" @input="updateElement" type="textarea" name="content" id="blogContent">
   </form>
-
-  <button @click="changeBlog(blog)">Envoyer</button>
-
+    <div class="center">
+    <button @click="changeBlog(blog)">Envoyer</button>
+    </div>
+</div>
 </template>
 
 <script>
@@ -51,3 +53,11 @@
     }
 
 </script>
+<style>
+    .editBlog{
+    margin-right: 200px;
+      padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+</style>

@@ -1,12 +1,13 @@
 <template >
-    <p @click="getBlogs()">rthrt</p>
-    <div class="flex-container">
-            <img :src="this.post.image" alt="#">
-            <div>
-                <h1>{{ this.post.title }}</h1>
-                <p>{{ this.post.content }}</p>
-            </div>
+<div class="post">
+    <div class="">
+        <img :src="this.post.image" alt="">
+        <div>
+            <h1>{{ this.post.title }}</h1>
+            <p>{{ this.post.content }}</p>
         </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -37,3 +38,16 @@ export default {
 }
 
 </script>
+<style>
+    .post{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .post img{
+    align-self: center;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    }
+</style>
