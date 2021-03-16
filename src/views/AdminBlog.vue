@@ -18,8 +18,8 @@
                     <p>{{ blog.content }}</p>
                 </div>
             </div>
-                <button @click="changeActive(blog)">Editer</button>
-                <button @click="deleteBlog(blog)">Supprimer</button>
+            <button @click="changeActive(blog)" class="edit">Editer</button>
+            <button @click="deleteBlog(blog)" class="delete">Supprimer</button>
         </div>
             <BlogEdit v-if="blog.active" :blog="blog"></BlogEdit>
 
@@ -70,7 +70,6 @@ export default{
 }
 
 .list-container>button{
-    max-height: 20px;
     align-self: center;
     margin-right: 20px;
     }
@@ -91,6 +90,7 @@ export default{
     display: flex;
     justify-content: flex-end;
     margin-right: 50px;
+    
 }
 .createBlog a{
     text-decoration: none;
@@ -98,6 +98,31 @@ export default{
 }
 .createBlog button{
     padding: 10px;
+    font-size: 20px;
+    background-color: #42b983;
+    padding: 15px;
+    border: none;
+    color: rgb(32, 32, 32);
+}
+
+.delete{
+    background-color: rgb(134, 0, 0);
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+}
+
+.edit{
+    background-color: rgb(0, 119, 255);
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+}
+
+.delete:hover, .edit:hover{
+    cursor: pointer;
 }
 
 </style>

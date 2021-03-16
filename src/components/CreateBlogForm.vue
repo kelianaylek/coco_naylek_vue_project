@@ -59,4 +59,17 @@ export default{
     display: flex;
     justify-content: center;
   }
+
+  form{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .center>button{
+    background-color: #42b983;
+    padding: 10px 15px;
+    font-size: 20px;
+    border: none;
+    color: rgb(20, 20, 20);
+  }
 </style>

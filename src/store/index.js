@@ -7,6 +7,8 @@ export default createStore({
         blogs: [],
         users: [],
 
+        userConnected : false,
+
         blogTitle: "",
         blogMetaTitle: "",
         blogMetaDescription: "",
@@ -109,7 +111,6 @@ export default createStore({
         ADD_USER(state, user) {
             user.id = state.users.length
             state.users.push(user)
-            console.log(state.users)
 
             router.push({ path: '/login' })
         },
@@ -122,7 +123,7 @@ export default createStore({
                         user.username = element.username
                         user.isConnected = true
                         state.users[element.id] = user
-                        console.log(state.users)
+                        state.userConnected = true
                         router.push({ path: '/blog' })
 
                     } else {
@@ -135,8 +136,7 @@ export default createStore({
         DECONNEXION(state, user) {
             user.isConnected = false
             state.users[user.id] = user
-
-            console.log(state.users)
+            state.userConnected = false
             router.push({ path: '/login' })
 
         }

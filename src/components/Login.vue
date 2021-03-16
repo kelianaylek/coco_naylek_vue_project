@@ -34,11 +34,15 @@ export default ({
         connexion(e){
             e.preventDefault()
             if(this.user.mail != "" && this.user.password != ""){
+                      console.log(this.$store.state.userConnected)
+
                 this.$store.commit('CONNECT_USER', this.user)
+                      console.log(this.$store.state.userConnected)
+
             }
 
             else{
-                console.log('Remplissez tous les champs fdp')
+                console.log('Remplissez tous les champs')
             }
             
         }
